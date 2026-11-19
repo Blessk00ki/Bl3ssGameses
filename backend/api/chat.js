@@ -16,7 +16,7 @@ const MAX_NAME_LENGTH = 24;
 const messages = [];
 const sessions = new Map();
 
-function setCors(res) {
+function setCors(req, res) {
   res.setHeader('Access-Control-Allow-Origin', allowedOrigin(req.headers.origin));
   res.setHeader('Vary', 'Origin');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
@@ -67,7 +67,7 @@ function sendMessage(body, session, res) {
 }
 
 module.exports = async (req, res) => {
-  setCors(res);
+  setCors(req, res);
 
   if (req.method === 'OPTIONS') {
     res.status(204).end();
