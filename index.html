@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <!-- Política da página: scripts apenas deste projeto, sem scripts de terceiros na interface; imagens, conexões e iframes só das origens usadas pelo hub. Não filtra recursos internos dos jogos incorporados. -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; object-src 'none'; script-src 'self' 'unsafe-inline'; script-src-attr 'none'; style-src 'self' 'unsafe-inline'; font-src 'self'; media-src blob:; img-src 'self' data: blob: https://cdn.jsdelivr.net https://github.com https://img.itch.zone https://infinity.unstable.life https://is1-ssl.mzstatic.com https://jumbomario.neocities.org https://osu.ppy.sh https://picon.ngfiles.com https://play-lh.googleusercontent.com https://pokemerald.com https://raw.githubusercontent.com https://selenite.cc https://shared.fastly.steamstatic.com https://static.games.yandex.net https://www.neweichgames.com https://www.nitrome.com; connect-src https://db.duck.quackprep.com https://dubdoo.com https://emupedia.net https://fnaffree.io https://mathlesson.github.io https://owlcraft.raymondjxu.net https://selenite.cc https://stickpage.com https://truffled.lol https://www.newgrounds.com https://yandex.com.tr; frame-src https://audiomack.com/embed/ https://db.duck.quackprep.com https://dubdoo.com https://emupedia.net https://fnaffree.io https://mathlesson.github.io https://owlcraft.raymondjxu.net https://selenite.cc https://stickpage.com https://truffled.lol https://www.newgrounds.com https://yandex.com.tr; form-action 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; object-src 'none'; script-src 'self' 'unsafe-inline'; script-src-attr 'none'; style-src 'self' 'unsafe-inline'; font-src 'self'; media-src blob:; img-src 'self' data: blob: https://cdn.jsdelivr.net https://github.com https://img.itch.zone https://infinity.unstable.life https://is1-ssl.mzstatic.com https://jumbomario.neocities.org https://osu.ppy.sh https://picon.ngfiles.com https://play-lh.googleusercontent.com https://pokemerald.com https://raw.githubusercontent.com https://selenite.cc https://shared.fastly.steamstatic.com https://static.games.yandex.net https://www.neweichgames.com https://www.nitrome.com; connect-src https://bl3ssgameses-chat.vercel.app https://db.duck.quackprep.com https://dubdoo.com https://emupedia.net https://fnaffree.io https://mathlesson.github.io https://owlcraft.raymondjxu.net https://selenite.cc https://stickpage.com https://truffled.lol https://www.newgrounds.com https://yandex.com.tr; frame-src https://audiomack.com/embed/ https://db.duck.quackprep.com https://dubdoo.com https://emupedia.net https://fnaffree.io https://mathlesson.github.io https://owlcraft.raymondjxu.net https://selenite.cc https://stickpage.com https://truffled.lol https://www.newgrounds.com https://yandex.com.tr; form-action 'none'">
   <meta name="theme-color" content="#081327">
   <meta name="application-name" content="BL3SS">
   <meta name="description" content="BL3SS: jogos de navegador, aplicativos e BlessSounds para explorar músicas e ouvir seus arquivos.">
@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="./style.css">
   <script src="./catalogo.js" defer></script>
   <script src="./app.js" defer></script>
+  <script src="./chat.js" defer></script>
 </head>
 <body>
   <!-- Biblioteca de ícones SVG, sem dependências externas. -->
@@ -76,6 +77,7 @@
     <symbol id="i-twitch" viewBox="0 0 24 24"><path d="M5 3h16v11l-4 4h-4l-4 3v-3H5Z"/><path d="M12 7v5m4-5v5"/></symbol>
     <symbol id="i-steam" viewBox="0 0 24 24"><path d="m2 14 5.2 2.25m4.65 1.5 5.75-5.15m-7.19 2.47 3.23-5.35"/><circle cx="17" cy="8.5" r="4.2"/><circle cx="17" cy="8.5" r="1.8"/><circle cx="9.2" cy="17.5" r="2.7"/></symbol>
     <symbol id="i-itch" viewBox="0 0 24 24"><path d="M4 10v9a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-9M3 9l2-5h14l2 5v1.4A1.6 1.6 0 0 1 19.4 12 2 2 0 0 1 17 10.8 2.8 2.8 0 0 1 12 11a2.8 2.8 0 0 1-5-.2A2 2 0 0 1 4.6 12 1.6 1.6 0 0 1 3 10.4Z"/><path d="M8.5 16h2M9.5 15v2m5.5-1h.01m2 .6h.01"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5.5h16v11H9.5L5 20v-3.5H4Z"/></symbol>
   </svg>
 
   <div id="wallpaper" class="wallpaper" aria-hidden="true"></div>
@@ -91,6 +93,7 @@
       <a class="nav-link" href="#random" data-route="random" aria-label="Random Games"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-dice"/></svg><span class="nav-tip" aria-hidden="true">Random Games</span></a>
       <a class="nav-link" href="#apps" data-route="apps" aria-label="Apps"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-grid"/></svg><span class="nav-tip" aria-hidden="true">Apps</span></a>
       <a class="nav-link" href="#musica" data-route="musica" aria-label="Música"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-music"/></svg><span class="nav-tip" aria-hidden="true">Música</span></a>
+      <a class="nav-link" href="#chat" data-route="chat" aria-label="Chat"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-chat"/></svg><span class="nav-tip" aria-hidden="true">Chat</span></a>
       <a class="nav-link nav-setting" href="#configuracoes" data-route="configuracoes" aria-label="Configurações"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-settings"/></svg><span class="nav-tip" aria-hidden="true">Configurações</span></a>
     </nav>
   </aside>
@@ -161,6 +164,24 @@
           <p class="catalog-order" id="games-order" title="Ordem aproximada por reconhecimento">Mais famosos primeiro</p>
         </div>
         <div class="library-grid" id="games-grid" role="region" aria-label="Jogos do catálogo" aria-describedby="games-count games-order" tabindex="-1"></div>
+      </section>
+
+      <section id="view-chat" data-page="chat" class="view" aria-labelledby="chat-title">
+        <div class="page-heading"><p class="eyebrow"><span></span> COMUNIDADE</p><h1 id="chat-title">Chat<span>.</span></h1><p>Converse com quem está no hub. Nada é salvo: ao fechar a página, a conversa some.</p></div>
+        <form id="chat-login" class="glass" autocomplete="off">
+          <div><label for="chat-name">Seu nome</label><input class="text-input" id="chat-name" name="name" required maxlength="24" placeholder="Como você quer aparecer"></div>
+          <div><label for="chat-admin">Senha de admin (opcional)</label><input class="text-input" id="chat-admin" name="adminPassword" type="password" maxlength="64"></div>
+          <p class="error-note" id="chat-error" role="status"></p>
+          <button class="btn btn-primary" type="submit">Entrar no chat</button>
+        </form>
+        <div id="chat-room" class="glass" hidden>
+          <ol id="chat-log" aria-live="polite"></ol>
+          <form id="chat-form" autocomplete="off">
+            <label for="chat-input" class="sr-only">Mensagem</label>
+            <input class="text-input" id="chat-input" maxlength="500" placeholder="Escreva uma mensagem">
+            <button class="btn btn-primary" type="submit">Enviar</button>
+          </form>
+        </div>
       </section>
 
       <section id="view-random" data-page="random" class="view" aria-labelledby="random-title">

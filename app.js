@@ -34,6 +34,7 @@
       {id:'random', label:'Random Games', icon:'dice'},
       {id:'apps', label:'Apps', icon:'grid'},
       {id:'musica', label:'Música', icon:'music'},
+      {id:'chat', label:'Chat', icon:'chat'},
       {id:'configuracoes', label:'Configurações', icon:'settings'}
     ];
     const defaultShortcuts = [
