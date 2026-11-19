@@ -1,7 +1,14 @@
 const { randomBytes } = require('crypto');
 
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || '111111';
-const ALLOWED_ORIGIN = 'https://blessk00ki.github.io';
+const ALLOWED_ORIGIN_PATTERNS = [
+  /^https:\/\/blessk00ki\.github\.io$/,
+  /^https:\/\/[a-z0-9-]+\.v0\.build$/,
+];
+
+function allowedOrigin(origin) {
+  return ALLOWED_ORIGIN_PATTERNS.some((pattern) => pattern.test(origin || '')) ? origin : 'https://blessk00ki.github.io';
+}
 const MAX_MESSAGES = 200;
 const MAX_TEXT_LENGTH = 500;
 const MAX_NAME_LENGTH = 24;
@@ -10,7 +17,8 @@ const messages = [];
 const sessions = new Map();
 
 function setCors(res) {
-  res.setHeader('Access-Control-Allow-Origin', ALLOWED_ORIGIN);
+  res.setHeader('Access-Control-Allow-Origin', allowedOrigin(req.headers.origin));
+  res.setHeader('Vary', 'Origin');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   res.setHeader('Cache-Control', 'no-store');
